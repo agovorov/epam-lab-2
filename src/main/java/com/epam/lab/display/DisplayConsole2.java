@@ -1,4 +1,4 @@
-package com.epam.display;
+package com.epam.lab.display;
 
 public class DisplayConsole2 implements DisplayStrategy {
 

@@ -1,7 +1,7 @@
 package com.epam.lab;
 
-import com.epam.display.DisplayStrategy;
-import com.epam.display.DisplayStrategyFactory;
+import com.epam.lab.display.DisplayStrategy;
+import com.epam.lab.display.DisplayStrategyFactory;
 import com.epam.lab.parser.TextParser;
 import com.epam.lab.files.Importer;
 
