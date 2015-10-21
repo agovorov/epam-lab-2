@@ -1,9 +1,11 @@
 package com.epam.lab;
 
+import org.apache.logging.log4j.*;
+
 import com.epam.lab.display.DisplayStrategy;
 import com.epam.lab.display.DisplayStrategyFactory;
-import com.epam.lab.parser.TextParser;
 import com.epam.lab.files.Importer;
+import com.epam.lab.parser.TextParser;
 
 /**
  * Task 2: Создать программу обработки текста учебника по программированию с
@@ -11,8 +13,8 @@ import com.epam.lab.files.Importer;
  * всех задачах с формированием текста заменять табуляции и последовательности
  * пробелов одним пробелом.
  * 
- * 14. В заданном тексте найти подстроку максимальной длины, являющуюся
- * палиндромом, т.е. читающуюся слева направо и справа налево одинаково.
+ * 3. Найти такое слово в первом предложении, которого нет ни в 
+ * одном из остальных предложений.
  * 
  * Вопросы: 
  * 		- Знак препинания - отдельный класс или Symbol 
@@ -22,6 +24,8 @@ import com.epam.lab.files.Importer;
  * @version 1.0
  */
 public class Main {
+	private static final Logger logger = LogManager.getLogger(Main.class);
+	
 	public static void main(String[] args) {
 		if (args.length != 1) {
 			throw new IllegalArgumentException(
@@ -29,7 +33,9 @@ public class Main {
 							+ ">: java -jar Lab2.jar \"io.txt\"");
 		}
 
-		// Where to display errors
+        logger.info("Let`s start!");
+		
+		// Where to print data
 		DisplayStrategy displayStrategy = DisplayStrategyFactory
 				.getWriter("console");
 
@@ -41,5 +47,7 @@ public class Main {
 		parser.parse();
 		parser.displayInfo(displayStrategy);
 
+		logger.debug(parser);
+		logger.info("Done");
 	}
 }

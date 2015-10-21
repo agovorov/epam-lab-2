@@ -1,5 +1,6 @@
 package com.epam.lab.parser;
 
+import com.epam.lab.Main;
 import com.epam.lab.display.DisplayStrategy;
 
 public class TextParser {
