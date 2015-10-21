@@ -16,7 +16,7 @@ import com.epam.lab.parser.TextParser;
  * 3. Найти такое слово в первом предложении, которого нет ни в одном из
  * остальных предложений.
  * 
- * Вопросы: 
+ * Вопросы:
  * 	- Знак препинания: отдельный класс или Symbol 
  * 	- Использовать LinkedList или ArrayList 
  * 	- Как правильно использовать log4j. В каждом классе static final?
@@ -28,14 +28,13 @@ public class Main {
 	private static final Logger logger = LogManager.getLogger(Main.class);
 
 	public static void main(String[] args) {
+		logger.info("System started.");
 		if (args.length != 1) {
 			logger.error("Input file not specified.");
 			throw new IllegalArgumentException(
 					"Specify a file name as input arguments.\n" + "Example:\n"
 							+ ">: java -jar Lab2.jar \"io.txt\"");
 		}
-
-		logger.info("System started.");
 
 		// Where to print data
 		DisplayStrategy displayStrategy = DisplayStrategyFactory
