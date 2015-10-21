@@ -25,4 +25,12 @@ public class TextParser {
 	public void displayInfo(DisplayStrategy display) {
 		display.show(content);
 	}
+
+	/**
+	 * Doing task
+	 */
+	public void doTask() {
+		// TODO Auto-generated method stub
+		
+	}
 }
