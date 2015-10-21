@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
 	<Appenders>
-		<RollingFile name="RollingFile" filename="log/logger.log"
-			filepattern="${logPath}/myexample-%d{yyyy-MM-dd}-%i.log">
+		<RollingFile name="RollingFile" filename="log/app.log"
+			filepattern="logs/app-%d{MM-dd-yyyy}.log.gz">
 			<PatternLayout>
 				<pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %c{1}: %m%n</pattern>
 			</PatternLayout>
@@ -13,15 +13,11 @@
 		</RollingFile>
 	</Appenders>
 
-	<Loggers>
-		<Root level="info">
-			<AppenderRef ref="Console" />
-			<AppenderRef ref="RollingFile" />
-		</Root>
-		
+	<Loggers>		
 		<Logger name="root" level="debug" additivity="false">
 			<appender-ref ref="RollingFile" level="debug" />
 		</Logger>
+
 		<Root level="debug" additivity="false">
 			<AppenderRef ref="RollingFile" />
 		</Root>
