@@ -1,5 +1,7 @@
 package com.epam.lab.display;
-
+/**
+ * @deprecated
+ */
 public class DisplayStrategyFactory {
 
 	public static DisplayStrategy getWriter(String param) {

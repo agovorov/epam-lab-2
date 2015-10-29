@@ -1,5 +1,9 @@
 package com.epam.lab.display;
 
+import java.util.List;
+/**
+ * @deprecated
+ */
 public class DisplayConsole2 implements DisplayStrategy {
 
 	/**
@@ -11,4 +15,12 @@ public class DisplayConsole2 implements DisplayStrategy {
 		System.out.println(data);
 	}
 
+	/**
+	 * Display list in console
+	 */
+	@Override
+	public void show(List<String> data) {
+		System.out.println("*** Console 2 output ***");
+		System.out.println(data);
+	}
 }

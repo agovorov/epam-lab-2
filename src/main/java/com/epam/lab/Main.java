@@ -2,10 +2,9 @@ package com.epam.lab;
 
 import org.apache.logging.log4j.*;
 
-import com.epam.lab.display.DisplayStrategy;
-import com.epam.lab.display.DisplayStrategyFactory;
-import com.epam.lab.files.Importer;
-import com.epam.lab.parser.TextParser;
+import com.epam.lab.textmanager.SimpleTextManager;
+import com.epam.lab.textmanager.TextManager;
+import com.epam.lab.textmanager.exception.TextManagerException;
 
 /**
  * Создать программу обработки текста учебника по программированию с
@@ -16,37 +15,32 @@ import com.epam.lab.parser.TextParser;
  * 3. Найти такое слово в первом предложении, которого нет ни в одном из
  * остальных предложений.
  * 
- * Вопросы:
- * 	- Знак препинания: отдельный класс или Symbol 
- * 	- Использовать LinkedList или ArrayList 
- * 	- Как правильно использовать log4j. В каждом классе static final?
+ * Вопросы: - Можно ли использовать continue - Использовать logger в Exception
+ * классах?
  * 
  * @author Govorov Andrey
  * @version 1.0
  */
 public class Main {
-	private static final Logger logger = LogManager.getLogger(Main.class);
 
-	public static void main(String[] args) {
-		logger.info("System started.");
-		if (args.length != 1) {
-			logger.error("Input file not specified.");
-			throw new IllegalArgumentException(
-					"Specify a file name as input arguments.\n" + "Example:\n"
-							+ ">: java -jar Lab2.jar \"io.txt\"");
-		}
+    private static final int ARG_FILENAME = 0;
+    private static final Logger logger = LogManager.getLogger(Main.class);
 
-		// Where to print data
-		DisplayStrategy displayStrategy = DisplayStrategyFactory
-				.getWriter("console");
-
-		// Read files from txt file
-		String text = Importer.readFile(args[0]);
-
-		// Parse text
-		TextParser parser = new TextParser(text);
-		parser.parse();
-		parser.doTask();
-		parser.displayInfo(displayStrategy);
+    public static void main(String[] args) {
+	logger.info("System started.");
+	if (args.length != 1) {
+	    logger.error("Input file not specified.");
+	    throw new IllegalArgumentException(
+		    "Specify a file name as input arguments.\n" + "Example:\n" + ">: java -jar Lab2.jar \"io.txt\"");
 	}
+
+	// Create text manager
+	String filename = args[ARG_FILENAME];
+	TextManager textManager = new SimpleTextManager(filename);
+	try {
+	    textManager.execute();
+	} catch (TextManagerException e) {
+	    logger.error("TextManager exception", e);
+	}
+    }
 }
