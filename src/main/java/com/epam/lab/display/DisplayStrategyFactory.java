@@ -1,17 +1,17 @@
 package com.epam.lab.display;
+
 /**
- * @deprecated
+ * Display strategy factory class
+ * 
+ * @author Govorov Andrey
  */
 public class DisplayStrategyFactory {
-
-	public static DisplayStrategy getWriter(String param) {
-        switch (param) {
-            case "console":
-                return new DisplayConsole();
-            case "console2":
-                return new DisplayConsole2();
-            default:
-                throw new IllegalArgumentException("Unknown strategy : param='" + param + "'");
-        }
+    public static DisplayStrategy getWriter(String param) {
+	switch (param) {
+		case "console":
+		    return new DisplayConsole();
+		default:
+		    throw new IllegalArgumentException("Unknown display strategy : param='" + param + "'");
+	}
     }
 }

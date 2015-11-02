@@ -1,5 +1,10 @@
 package com.epam.lab.parser.entity.token;
 
-public class Token {
+/**
+ * Abstract entity class for tokens(words, punctuation mark, numbers)
+ * 
+ * @author Govorov Andrey
+ */
+public abstract class Token {
 
 }

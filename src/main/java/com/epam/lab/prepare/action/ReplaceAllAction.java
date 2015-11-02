@@ -2,6 +2,11 @@ package com.epam.lab.prepare.action;
 
 import java.util.List;
 
+/**
+ * Action replace string in every line
+ * 
+ * @author Govorov Andrey
+ */
 public class ReplaceAllAction implements Action {
 
     private String regex;

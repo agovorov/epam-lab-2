@@ -1,8 +1,6 @@
 package com.epam.lab.prepare;
 
 import java.util.List;
-
-import com.epam.lab.parser.entity.Text;
 import com.epam.lab.prepare.exception.PreparationExceptions;
 
 /**

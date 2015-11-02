@@ -2,6 +2,11 @@ package com.epam.lab.prepare.action;
 
 import java.util.List;
 
+/**
+ * Action deleting empty line
+ * 
+ * @author Govorov Andrey
+ */
 public class DeleteEmptyLinesAction implements Action {
 
     @Override

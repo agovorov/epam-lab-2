@@ -3,33 +3,28 @@ package com.epam.lab.parser.entity.token;
 import com.epam.lab.parser.entity.Symbol;
 
 /**
- * Entity class for punctuation symbols
+ * Entity class for unrecognized symbols
  * 
  * @author Govorov Andrey
  */
-public class PunctuationMark extends Token {
-
+public class OtherMark extends Token {
+    
     private Symbol symbol;
 
-    public PunctuationMark(Symbol symbol) {
+    public OtherMark(Symbol symbol) {
 	super();
 	this.symbol = symbol;
     }
-
-    public PunctuationMark(String str) {
+    
+    public OtherMark(String str) {
 	super();
 	this.symbol = new Symbol(str.charAt(0));
     }
 
-    /**
-     * Return symbol
-     * 
-     * @return symbol
-     */
     public Symbol returnValue() {
 	return symbol;
     }
-
+    
     public String toString() {
 	return getClass() + ": `" + symbol.returnSymbols() + "`";
     }

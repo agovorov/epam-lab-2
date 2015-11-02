@@ -26,7 +26,7 @@ public class SimpleFileReader implements FileReader {
     }
 
     /**
-     * Read text file in UTF8 charset and return String value
+     * Read text file in UTF8 charset and return list of String values
      */
     @Override
     public List<String> readAllLines() throws ReadingException {
@@ -37,7 +37,10 @@ public class SimpleFileReader implements FileReader {
 	}
 
 	try {
-	    List<String> result = Files.readAllLines(file.toPath(), Charset.forName("utf-8"));
+	    List<String> result = Files.readAllLines(
+		file.toPath(), 
+		Charset.forName("utf-8")
+	    );
 
 	    if (result.isEmpty()) {
 		logger.error("File is empty `" + filename + "`");

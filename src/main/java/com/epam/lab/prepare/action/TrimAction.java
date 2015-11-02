@@ -2,6 +2,11 @@ package com.epam.lab.prepare.action;
 
 import java.util.List;
 
+/**
+ * Action trimming symbols
+ * 
+ * @author Govorov Andrey
+ */
 public class TrimAction implements Action {
 
     @Override
@@ -15,5 +20,4 @@ public class TrimAction implements Action {
 	}
 	return lines;
     }
-
 }

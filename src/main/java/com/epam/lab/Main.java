@@ -15,9 +15,6 @@ import com.epam.lab.textmanager.exception.TextManagerException;
  * 3. Найти такое слово в первом предложении, которого нет ни в одном из
  * остальных предложений.
  * 
- * Вопросы: - Можно ли использовать continue - Использовать logger в Exception
- * классах?
- * 
  * @author Govorov Andrey
  * @version 1.0
  */

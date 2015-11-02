@@ -1,8 +1,5 @@
 package com.epam.lab.parser.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Class for character
  * 
@@ -11,25 +8,16 @@ import java.util.List;
 public class Symbol {
     private char letter;
 
-    public Symbol() {
-
+    public Symbol(char c) {
+	super();
+	letter = c;
     }
-    
+
     public void setSymbol(char c) {
 	letter = c;
     }
 
     public char returnSymbols() {
 	return letter;
-    }
-
-    /**
-     * Is real symbol or control symbol
-     * 
-     * @param symbol
-     * @return
-     */
-    public static boolean isLetter(char symbol) {
-	return Character.isLetterOrDigit(symbol);
     }
 }
