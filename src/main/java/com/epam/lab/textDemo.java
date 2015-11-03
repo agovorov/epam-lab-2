@@ -27,7 +27,9 @@ public class textDemo {
 	word1.addSymbol(s1);
 	word1.addSymbol(s2);
 	word1.addSymbol(s3);
-	// System.out.println("Word 1: " + word1.getValue());
+
+	word1.removeSymbol(s1);
+	System.out.println("Word 1: " + word1.getValue());
 
 	PunctuationMark pmark = new PunctuationMark(" ");
 

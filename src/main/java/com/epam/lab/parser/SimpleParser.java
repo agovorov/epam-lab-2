@@ -50,13 +50,4 @@ public class SimpleParser implements Parser {
 	}
 	return text;
     }
-
-    /**
-     * Assembling text from object
-     */
-    @Override
-    public String getSourceText(Text text) {
-
-	return null;
-    }
 }

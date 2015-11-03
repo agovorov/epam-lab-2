@@ -6,6 +6,4 @@ import com.epam.lab.parser.exception.ParsingException;
 public interface Parser {
 
     Text parse(String string) throws ParsingException;
-    
-    String getSourceText(Text text);
 }
