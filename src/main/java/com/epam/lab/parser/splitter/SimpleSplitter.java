@@ -12,11 +12,6 @@ import com.epam.lab.parser.action.SplitAction;
 public class SimpleSplitter implements Splitter {
 
     @Override
-    public List<String> action(List<String> text, SplitAction splitAction) {
-	return splitAction.splitTo(text);
-    }
-
-    @Override
     public List<String> action(String text, SplitAction splitAction) {
 	return splitAction.splitTo(text);
     }

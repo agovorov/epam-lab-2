@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.epam.lab.display.DisplayStrategy;
-import com.epam.lab.display.DisplayStrategyFactory;
 import com.epam.lab.parser.entity.token.OtherMark;
 import com.epam.lab.parser.entity.token.PunctuationMark;
 import com.epam.lab.parser.entity.token.Token;

@@ -21,24 +21,6 @@ public class WordSplitAction implements SplitAction {
      * @return List
      */
     @Override
-    public List<String> splitTo(List<String> lines) {
-	ArrayList<String> matches = new ArrayList<String>();
-	Pattern pattern = Pattern.compile(WORD_PATTERN);
-	for (String string : lines) {
-	    String[] result = pattern.split(string);
-	    matches.addAll(Arrays.asList(result));
-	}
-
-	return matches;
-    }
-
-    /**
-     * Split each line by pattern to words
-     * 
-     * @param lines Lines of string
-     * @return List
-     */
-    @Override
     public List<String> splitTo(String line) {
 	ArrayList<String> matches = new ArrayList<String>();
 	Pattern pattern = Pattern.compile(WORD_PATTERN);

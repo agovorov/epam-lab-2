@@ -28,30 +28,6 @@ public class SimpleParser implements Parser {
     }
 
     @Override
-    public Text parse(List<String> lines) throws ParsingException {
-	text = new Text();
-
-	// Split to paragraphs
-	List<String> paragraphList = splitter.action(lines, new ParagraphSplitAction());
-	for (String paragraphStr : paragraphList) {
-	    Paragraph paragraph = new Paragraph();
-	    List<String> sentenceList = splitter.action(paragraphStr, new SentenceSplitAction());
-
-	    for (String sentenceStr : sentenceList) {
-		// All tokens from sentense
-		List<String> str = splitter.action(sentenceStr, new TokenSplitAction());
-
-		// Assembling sentence from tokens
-		SentenceGenerator sentenceGenerator = new SentenceGenerator();
-		Sentence sentence = sentenceGenerator.generateFromTokens(str);
-		paragraph.addSentence(sentence);
-	    }
-	    text.addParagraph(paragraph);
-	}
-	return text;
-    }
-
-    @Override
     public Text parse(String stringContent) throws ParsingException {
 	text = new Text();
 
@@ -80,8 +56,7 @@ public class SimpleParser implements Parser {
      */
     @Override
     public String getSourceText(Text text) {
-	
-	
+
 	return null;
     }
 }

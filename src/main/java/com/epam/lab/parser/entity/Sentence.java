@@ -82,7 +82,6 @@ public class Sentence implements Iterable<Token> {
 		result.append(((OtherMark) token).getValue());
 	    }
 	}
-	// getClass() + ": ! " +
 	return result.toString();
     }
 

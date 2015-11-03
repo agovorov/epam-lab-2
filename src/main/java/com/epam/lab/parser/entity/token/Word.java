@@ -37,21 +37,9 @@ public class Word extends Token implements Iterable<Symbol> {
     }
 
     public void addSymbol(char c) {
-	//
-	// TODO: This is the same code as in constructor. How to fix it?
-	//
-	// char[] character = str.toCharArray();
-	// for (char c : character) {
 	Symbol symbol = new Symbol(c);
 	symbols.add(symbol);
-	// }
     }
-
-    /*
-     * public void removeSymbol(Symbol symbolToRemove) { for (Symbol symbol :
-     * symbols) { if (symbol.equals(symbolToRemove)) {
-     * symbols.remove(symbolToRemove); } } }
-     */
 
     public int count() {
 	return symbols.size();

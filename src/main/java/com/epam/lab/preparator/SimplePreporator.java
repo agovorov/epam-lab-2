@@ -23,7 +23,6 @@ public class SimplePreporator implements Preparator {
 
     // Default actions
     private List<Action> defaultActions = Arrays.asList(
-	    // new DeleteEmptyLinesAction(),
 	    new ReplaceAllAction("\uFEFF", ""), // UTF BOM symbol
 	    new ReplaceAllAction(" {2,}", " "), // 2 or more whitespaces
 	    new ReplaceAllAction("\t", " "), 	// Tab symbol

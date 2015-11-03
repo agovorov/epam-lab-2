@@ -19,8 +19,12 @@ public class Number extends Token implements Iterable<Symbol> {
 	symbols = new ArrayList<Symbol>();
     }
     
-    public Number(String str) {
-	// Split string to character array
+    /**
+     * Create number token from string. Splitting string into char array first ant then
+     * create Symbol object
+     * @param str
+     */
+    public Number(String str) {	
 	symbols = new ArrayList<Symbol>();
 	char[] character = str.toCharArray();
 	for(char c : character) {
