@@ -28,7 +28,7 @@ public class CustomTask implements Task {
     }
 
     @Override
-    public void execute() throws TaskException {	
+    public void execute() throws TaskException {
 	if (!text.isEmpty()) {
 	    // Get first sentence in first paragraph
 	    Sentence firstSentence = text.getParagraph(0).getSentence(0);
@@ -71,7 +71,7 @@ public class CustomTask implements Task {
 		}
 
 		if (!foundWord) {
-		    listOfTask.add(tokenWord.valueOf());
+		    listOfTask.add(tokenWord.getValue());
 		}
 	    }
 	}
@@ -80,7 +80,7 @@ public class CustomTask implements Task {
     @Override
     public void printData() {
 	DisplayStrategy display = DisplayStrategyFactory.getWriter("console");
-	display.show("Task words: ");
+	display.show("Task. Words in first sentence never met later: ");
 	display.show(listOfTask);
     }
 }

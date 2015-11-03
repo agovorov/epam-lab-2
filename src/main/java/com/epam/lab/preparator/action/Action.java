@@ -1,4 +1,4 @@
-package com.epam.lab.prepare.action;
+package com.epam.lab.preparator.action;
 
 import java.util.List;
 
@@ -10,4 +10,6 @@ import java.util.List;
 public interface Action {
 
     List<String> doAction(List<String> lines);
+    
+    String doAction(String text);
 }

@@ -1,13 +1,13 @@
-package com.epam.lab.prepare;
+package com.epam.lab.preparator;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.epam.lab.prepare.action.Action;
-import com.epam.lab.prepare.action.DeleteEmptyLinesAction;
-import com.epam.lab.prepare.action.ReplaceAllAction;
-import com.epam.lab.prepare.action.TrimAction;
-import com.epam.lab.prepare.exception.PreparationExceptions;
+import com.epam.lab.preparator.action.Action;
+import com.epam.lab.preparator.action.DeleteEmptyLinesAction;
+import com.epam.lab.preparator.action.ReplaceAllAction;
+import com.epam.lab.preparator.action.TrimAction;
+import com.epam.lab.preparator.exception.PreparationExceptions;
 
 /**
  * Simple text preporator
@@ -23,12 +23,11 @@ public class SimplePreporator implements Preparator {
 
     // Default actions
     private List<Action> defaultActions = Arrays.asList(
-	    new DeleteEmptyLinesAction(),
+	    // new DeleteEmptyLinesAction(),
 	    new ReplaceAllAction("\uFEFF", ""), // UTF BOM symbol
 	    new ReplaceAllAction(" {2,}", " "), // 2 or more whitespaces
-	    new ReplaceAllAction("\t", " "), // Tab symbol
-	    new TrimAction()
-    );
+	    new ReplaceAllAction("\t", " "), 	// Tab symbol
+	    new TrimAction());
 
     /**
      * Executes every action
@@ -38,6 +37,16 @@ public class SimplePreporator implements Preparator {
      */
     @Override
     public List<String> prepareText(List<String> text) throws PreparationExceptions {
+	if (!defaultActions.isEmpty()) {
+	    for (Action action : defaultActions) {
+		text = action.doAction(text);
+	    }
+	}
+	return text;
+    }
+
+    @Override
+    public String prepareText(String text) throws PreparationExceptions {
 	if (!defaultActions.isEmpty()) {
 	    for (Action action : defaultActions) {
 		text = action.doAction(text);

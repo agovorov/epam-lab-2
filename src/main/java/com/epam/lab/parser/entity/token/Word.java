@@ -36,11 +36,28 @@ public class Word extends Token implements Iterable<Symbol> {
 	symbols.add(symbol);
     }
 
+    public void addSymbol(char c) {
+	//
+	// TODO: This is the same code as in constructor. How to fix it?
+	//
+	// char[] character = str.toCharArray();
+	// for (char c : character) {
+	Symbol symbol = new Symbol(c);
+	symbols.add(symbol);
+	// }
+    }
+
+    /*
+     * public void removeSymbol(Symbol symbolToRemove) { for (Symbol symbol :
+     * symbols) { if (symbol.equals(symbolToRemove)) {
+     * symbols.remove(symbolToRemove); } } }
+     */
+
     public int count() {
 	return symbols.size();
     }
 
-    public String valueOf() {
+    public String getValue() {
 	StringBuilder result = new StringBuilder();
 	for (Symbol symbol : symbols) {
 	    result.append(symbol.returnSymbols());
@@ -74,11 +91,8 @@ public class Word extends Token implements Iterable<Symbol> {
 	return symbols.iterator();
     }
 
+    @Override
     public String toString() {
-	StringBuilder result = new StringBuilder();
-	for (Symbol symbol : symbols) {
-	    result.append(symbol.returnSymbols());
-	}
-	return getClass() + ": " + result.toString();
+	return "Word [symbols.size=" + symbols.size() + "]";
     }
 }

@@ -11,6 +11,10 @@ public class PunctuationMark extends Token {
 
     private Symbol symbol;
 
+    public PunctuationMark() {
+	this.symbol = new Symbol(' ');
+    }
+
     public PunctuationMark(Symbol symbol) {
 	super();
 	this.symbol = symbol;
@@ -21,16 +25,12 @@ public class PunctuationMark extends Token {
 	this.symbol = new Symbol(str.charAt(0));
     }
 
-    /**
-     * Return symbol
-     * 
-     * @return symbol
-     */
-    public Symbol returnValue() {
-	return symbol;
+    public String getValue() {
+	return String.valueOf(symbol.returnSymbols());
     }
 
+    @Override
     public String toString() {
-	return getClass() + ": `" + symbol.returnSymbols() + "`";
+	return "PunctuationMark [symbol=`" + symbol.returnSymbols() + "`]";
     }
 }

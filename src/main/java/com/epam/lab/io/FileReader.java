@@ -12,4 +12,6 @@ import com.epam.lab.io.exception.ReadingException;
 public interface FileReader {
 
     List<String> readAllLines() throws ReadingException;
+    
+    String readToString() throws ReadingException;
 }

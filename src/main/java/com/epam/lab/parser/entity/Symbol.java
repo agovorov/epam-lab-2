@@ -1,7 +1,7 @@
 package com.epam.lab.parser.entity;
 
 /**
- * Class for character
+ * Class for character. Immutable object
  * 
  * @author Govorov Andrey
  */
@@ -10,10 +10,6 @@ public class Symbol {
 
     public Symbol(char c) {
 	super();
-	letter = c;
-    }
-
-    public void setSymbol(char c) {
 	letter = c;
     }
 

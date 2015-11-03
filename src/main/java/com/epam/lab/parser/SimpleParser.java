@@ -50,4 +50,38 @@ public class SimpleParser implements Parser {
 	}
 	return text;
     }
+
+    @Override
+    public Text parse(String stringContent) throws ParsingException {
+	text = new Text();
+
+	// Split to paragraphs
+	List<String> paragraphList = splitter.action(stringContent, new ParagraphSplitAction());
+	for (String paragraphStr : paragraphList) {
+	    Paragraph paragraph = new Paragraph();
+	    List<String> sentenceList = splitter.action(paragraphStr, new SentenceSplitAction());
+
+	    for (String sentenceStr : sentenceList) {
+		// All tokens from sentense
+		List<String> str = splitter.action(sentenceStr, new TokenSplitAction());
+
+		// Assembling sentence from tokens
+		SentenceGenerator sentenceGenerator = new SentenceGenerator();
+		Sentence sentence = sentenceGenerator.generateFromTokens(str);
+		paragraph.addSentence(sentence);
+	    }
+	    text.addParagraph(paragraph);
+	}
+	return text;
+    }
+
+    /**
+     * Assembling text from object
+     */
+    @Override
+    public String getSourceText(Text text) {
+	
+	
+	return null;
+    }
 }

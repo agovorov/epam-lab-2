@@ -7,5 +7,10 @@ import com.epam.lab.parser.exception.ParsingException;
 
 public interface Parser {
 
+    @Deprecated
     Text parse(List<String> lines) throws ParsingException;
+
+    Text parse(String string) throws ParsingException;
+    
+    String getSourceText(Text text);
 }

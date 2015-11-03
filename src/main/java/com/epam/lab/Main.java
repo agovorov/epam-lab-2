@@ -1,7 +1,6 @@
 package com.epam.lab;
 
 import org.apache.logging.log4j.*;
-
 import com.epam.lab.textmanager.SimpleTextManager;
 import com.epam.lab.textmanager.TextManager;
 import com.epam.lab.textmanager.exception.TextManagerException;

@@ -6,5 +6,5 @@ package com.epam.lab.parser.entity.token;
  * @author Govorov Andrey
  */
 public abstract class Token {
-
+   
 }

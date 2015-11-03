@@ -21,8 +21,12 @@ public class OtherMark extends Token {
 	this.symbol = new Symbol(str.charAt(0));
     }
 
-    public Symbol returnValue() {
+    public Symbol returnSymbol() {
 	return symbol;
+    }
+    
+    public String getValue() {
+	return String.valueOf( symbol.returnSymbols() );
     }
     
     public String toString() {

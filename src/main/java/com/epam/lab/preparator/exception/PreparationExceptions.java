@@ -1,4 +1,4 @@
-package com.epam.lab.prepare.exception;
+package com.epam.lab.preparator.exception;
 
 public class PreparationExceptions extends Exception {
     public PreparationExceptions(String message) {

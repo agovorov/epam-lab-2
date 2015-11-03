@@ -1,7 +1,5 @@
 package com.epam.lab.textmanager;
 
-import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,9 +12,9 @@ import com.epam.lab.parser.Parser;
 import com.epam.lab.parser.SimpleParser;
 import com.epam.lab.parser.entity.Text;
 import com.epam.lab.parser.exception.ParsingException;
-import com.epam.lab.prepare.Preparator;
-import com.epam.lab.prepare.SimplePreporator;
-import com.epam.lab.prepare.exception.PreparationExceptions;
+import com.epam.lab.preparator.Preparator;
+import com.epam.lab.preparator.SimplePreporator;
+import com.epam.lab.preparator.exception.PreparationExceptions;
 import com.epam.lab.task.CustomTask;
 import com.epam.lab.task.Task;
 import com.epam.lab.task.exception.TaskException;
@@ -43,25 +41,20 @@ public class SimpleTextManager implements TextManager {
     @Override
     public void execute() throws TextManagerException {
 	try {
-	    List<String> lines = reader.readAllLines();
-	    lines = preparator.prepareText(lines);
-	    Text text = parser.parse(lines);
-	    
-	    // Display Text object
-	    DisplayStrategy display = DisplayStrategyFactory.getWriter("console");
-	    display.show("Text structure: ");
-	    display.show(text);
+	    String content = reader.readToString();
+	    content = preparator.prepareText(content);
+	    Text text = parser.parse(content);
 
 	    // Execute task
 	    Task task = new CustomTask(text);
 	    task.execute();
 	    task.printData();
-	} catch (PreparationExceptions e) {
-	    logger.error("Unable to prepare file", e);
-	    throw new TextManagerException("Preporation error", e);
 	} catch (ReadingException e) {
 	    logger.error("Unable to read file", e);
 	    throw new TextManagerException("Reading error", e);
+	} catch (PreparationExceptions e) {
+	    logger.error("Unable to prepare file", e);
+	    throw new TextManagerException("Preporation error", e);
 	} catch (ParsingException e) {
 	    logger.error("Unable to parse text", e);
 	    throw new TextManagerException("Unable to parse text", e);

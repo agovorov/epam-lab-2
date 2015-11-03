@@ -1,4 +1,4 @@
-package com.epam.lab.prepare.action;
+package com.epam.lab.preparator.action;
 
 import java.util.List;
 
@@ -19,5 +19,13 @@ public class TrimAction implements Action {
 	    }
 	}
 	return lines;
+    }
+
+    @Override
+    public String doAction(String text) {
+	if (!text.isEmpty()) {
+	    text = text.trim();
+	}
+	return text;
     }
 }
