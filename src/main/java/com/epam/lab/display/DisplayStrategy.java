@@ -1,8 +1,8 @@
 package com.epam.lab.display;
 
-import java.util.List;
-
 import com.epam.lab.parser.entity.Text;
+
+import java.util.List;
 
 public interface DisplayStrategy {
     void show(String data);

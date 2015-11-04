@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 /**
  * Split list of strings to symbols
- * 
+ *
  * @author Govorov Andrey
  */
 public class SymbolSplitAction implements SplitAction {
@@ -16,22 +16,21 @@ public class SymbolSplitAction implements SplitAction {
 
     /**
      * Split string by pattern
-     * 
-     * @param txt
-     *            Input text
+     *
+     * @param txt Input text
      * @return List
      */
     @Override
     public List<String> splitTo(String txt) {
-	ArrayList<String> matches = new ArrayList<String>();
-	Pattern pattern = Pattern.compile(LETTER_PATTERN);
-	Matcher matcher = pattern.matcher(txt);
-	while (matcher.find()) {
-	    String str = matcher.group();
-	    if (!str.isEmpty()) {
-		matches.add(str.trim());
-	    }
-	}
-	return matches;
+        ArrayList<String> matches = new ArrayList<String>();
+        Pattern pattern = Pattern.compile(LETTER_PATTERN);
+        Matcher matcher = pattern.matcher(txt);
+        while (matcher.find()) {
+            String str = matcher.group();
+            if (!str.isEmpty()) {
+                matches.add(str.trim());
+            }
+        }
+        return matches;
     }
 }

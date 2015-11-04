@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 /**
  * Split list of strings to paragraphs
- * 
+ *
  * @author Govorov Andrey
  */
 public class ParagraphSplitAction implements SplitAction {
@@ -16,17 +16,17 @@ public class ParagraphSplitAction implements SplitAction {
 
     /**
      * Split string by pattern
-     * 
+     *
      * @param txt Input text
      * @return List
      */
     @Override
     public List<String> splitTo(String txt) {
-	ArrayList<String> matches = new ArrayList<String>();
-	Pattern pattern = Pattern.compile(PARAGRAPH_PATTERN);
-	String[] result = pattern.split(txt);
-	matches.addAll(Arrays.asList(result));
+        ArrayList<String> matches = new ArrayList<String>();
+        Pattern pattern = Pattern.compile(PARAGRAPH_PATTERN);
+        String[] result = pattern.split(txt);
+        matches.addAll(Arrays.asList(result));
 
-	return matches;
+        return matches;
     }
 }

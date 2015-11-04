@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 /**
  * Split list of strings to tokens (word, punctuation mark, numbers)
- * 
+ *
  * @author Govorov Andrey
  */
 public class TokenSplitAction implements SplitAction {
@@ -16,19 +16,19 @@ public class TokenSplitAction implements SplitAction {
 
     /**
      * Split each line by pattern
-     * 
-     * @param lines Lines of string
+     *
+     * @param txt Lines of string
      * @return List
      */
     @Override
     public List<String> splitTo(String txt) {
-	List<String> list = new ArrayList<String>();
-	Matcher matcher = Pattern.compile(TOKEN_PATTERN).matcher(txt);
+        List<String> list = new ArrayList<String>();
+        Matcher matcher = Pattern.compile(TOKEN_PATTERN).matcher(txt);
 
-	while (matcher.find()) {
-	    list.add(matcher.group(1));
-	}
+        while (matcher.find()) {
+            list.add(matcher.group(1));
+        }
 
-	return list;
+        return list;
     }
 }

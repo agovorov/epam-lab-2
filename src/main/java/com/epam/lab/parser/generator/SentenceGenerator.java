@@ -1,15 +1,12 @@
 package com.epam.lab.parser.generator;
 
+import com.epam.lab.parser.entity.Sentence;
+import com.epam.lab.parser.entity.token.Number;
+import com.epam.lab.parser.entity.token.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-
-import com.epam.lab.parser.entity.Sentence;
-import com.epam.lab.parser.entity.token.OtherMark;
-import com.epam.lab.parser.entity.token.PunctuationMark;
-import com.epam.lab.parser.entity.token.Token;
-import com.epam.lab.parser.entity.token.Word;
-import com.epam.lab.parser.entity.token.Number;
 
 /**
  * Class for generating sentence entity from list
@@ -25,34 +22,34 @@ public class SentenceGenerator {
 
     /**
      * Generate Sentence entity from list of tokens
-     * 
+     *
      * @param line
      * @return Sentence entity
      */
     public Sentence generateFromTokens(List<String> line) {
-	List<Token> listToken = new ArrayList<Token>();
+        List<Token> listToken = new ArrayList<Token>();
 
-	Pattern patternWord = Pattern.compile(WORD_PATTERN);
-	Pattern patternWord2 = Pattern.compile(WORD2_PATTERN);
-	Pattern patternNumber = Pattern.compile(NUMBER_PATTERN);
-	Pattern patternMark = Pattern.compile(MARK_PATTERN);
+        Pattern patternWord = Pattern.compile(WORD_PATTERN);
+        Pattern patternWord2 = Pattern.compile(WORD2_PATTERN);
+        Pattern patternNumber = Pattern.compile(NUMBER_PATTERN);
+        Pattern patternMark = Pattern.compile(MARK_PATTERN);
 
-	if (!line.isEmpty()) {
-	    for (String str : line) {
-		if (patternWord.matcher(str).matches()) {
-		    listToken.add(new Word(str));
-		} else if (patternWord2.matcher(str).matches()) {
-		    listToken.add(new Word(str));
-		} else if (patternNumber.matcher(str).matches()) {
-		    listToken.add(new Number(str));
-		} else if (patternMark.matcher(str).matches()) {
-		    listToken.add(new PunctuationMark(str));
-		} else {
-		    listToken.add(new OtherMark(str));
-		}
-	    }
-	}
+        if (!line.isEmpty()) {
+            for (String str : line) {
+                if (patternWord.matcher(str).matches()) {
+                    listToken.add(new Word(str));
+                } else if (patternWord2.matcher(str).matches()) {
+                    listToken.add(new Word(str));
+                } else if (patternNumber.matcher(str).matches()) {
+                    listToken.add(new Number(str));
+                } else if (patternMark.matcher(str).matches()) {
+                    listToken.add(new PunctuationMark(str));
+                } else {
+                    listToken.add(new OtherMark(str));
+                }
+            }
+        }
 
-	return new Sentence(listToken);
+        return new Sentence(listToken);
     }
 }
