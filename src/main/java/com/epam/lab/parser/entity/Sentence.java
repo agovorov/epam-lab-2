@@ -4,6 +4,7 @@ import com.epam.lab.parser.entity.token.OtherMark;
 import com.epam.lab.parser.entity.token.PunctuationMark;
 import com.epam.lab.parser.entity.token.Token;
 import com.epam.lab.parser.entity.token.Word;
+import com.epam.lab.parser.exception.UndefinedTokenException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,7 +20,7 @@ public class Sentence implements Iterable<Token> {
     private List<Token> tokens;
 
     public Sentence() {
-        tokens = new ArrayList<Token>();
+        tokens = new ArrayList<>();
     }
 
     public Sentence(List<Token> list) {
@@ -28,19 +29,18 @@ public class Sentence implements Iterable<Token> {
     }
 
     /**
-     * All string as one Word object
+     * Creating tokens from string line. Input string split into tokens and then return objects
      *
      * @param str
      */
     public Sentence(String str) {
-        tokens = new ArrayList<Token>();
+        // Split to tokens
+        List<String> listTokens = Token.splitToTokens(str);
 
-        String[] stringParts = str.split(" ");
-        if (stringParts.length > 0) {
-            for (String s : stringParts) {
-                Word word = new Word(s + " ");
-                tokens.add(word);
-            }
+        tokens = new ArrayList<>();
+        for (String tokenStr : listTokens) {
+            Token token = Token.getTokenType(tokenStr);
+            tokens.add(token);
         }
     }
 
@@ -74,29 +74,13 @@ public class Sentence implements Iterable<Token> {
     public String getValue() {
         StringBuilder result = new StringBuilder();
         for (Token token : tokens) {
-            if (token instanceof Word) {
-                result.append(((Word) token).getValue());
-            } else if (token instanceof PunctuationMark) {
-                result.append(((PunctuationMark) token).getValue());
-            } else if (token instanceof OtherMark) {
-                result.append(((OtherMark) token).getValue());
+            try {
+                String tokenValue = Token.getTokenValue(token);
+                result.append(tokenValue);
+            } catch (UndefinedTokenException e) {
+                // Ignore Wrong token. Never goes here
             }
         }
         return result.toString();
-    }
-
-    public void showStructure() {
-        System.out.println("\t" + this);
-        for (Token token : tokens) {
-            System.out.print("\t\t" + token.getClass() + ": ");
-            if (token instanceof Word) {
-                System.out.print('\'' + ((Word) token).getValue() + '\'');
-            } else if (token instanceof PunctuationMark) {
-                System.out.print('\'' + ((PunctuationMark) token).getValue() + '\'');
-            } else if (token instanceof OtherMark) {
-                System.out.print('\'' + ((OtherMark) token).getValue() + '\'');
-            }
-            System.out.println();
-        }
     }
 }

@@ -2,27 +2,11 @@ package com.epam.lab.parser.entity.token;
 
 import com.epam.lab.parser.entity.Symbol;
 
-/**
- * Entity class for punctuation symbols
- *
- * @author Govorov Andrey
- */
-public class PunctuationMark extends Token {
-
+public class Whitespace extends Token {
     private Symbol symbol;
 
-    public PunctuationMark() {
+    public Whitespace() {
         this.symbol = new Symbol(' ');
-    }
-
-    public PunctuationMark(Symbol symbol) {
-        super();
-        this.symbol = symbol;
-    }
-
-    public PunctuationMark(String str) {
-        super();
-        this.symbol = new Symbol(str.charAt(0));
     }
 
     public String getValue() {

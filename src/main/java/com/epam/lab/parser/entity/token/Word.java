@@ -114,7 +114,7 @@ public class Word extends Token implements Iterable<Symbol> {
     public String getValue() {
         StringBuilder result = new StringBuilder();
         for (Symbol symbol : symbols) {
-            result.append(symbol.returnSymbols());
+            result.append(symbol.getSymbol());
         }
 
         return result.toString();
@@ -129,12 +129,12 @@ public class Word extends Token implements Iterable<Symbol> {
     public boolean compare(Word word) {
         StringBuilder sb1 = new StringBuilder();
         for (Symbol symbol : symbols) {
-            sb1.append(symbol.returnSymbols());
+            sb1.append(symbol.getSymbol());
         }
 
         StringBuilder sb2 = new StringBuilder();
         for (Symbol symbol : word) {
-            sb2.append(symbol.returnSymbols());
+            sb2.append(symbol.getSymbol());
         }
 
         return sb1.toString().equalsIgnoreCase(sb2.toString());
@@ -147,7 +147,7 @@ public class Word extends Token implements Iterable<Symbol> {
 
     @Override
     public String toString() {
-        return "Word [symbols.size=" + symbols.size() + "]";
+        return getClass() + ": [symbols.size=" + symbols.size() + "]";
     }
 
     /**

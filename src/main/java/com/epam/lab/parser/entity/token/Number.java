@@ -34,16 +34,22 @@ public class Number extends Token implements Iterable<Symbol> {
         }
     }
 
+    public String getValue() {
+        StringBuilder result = new StringBuilder();
+        for (Symbol symbol : symbols) {
+            result.append(symbol.getSymbol());
+        }
+
+        return result.toString();
+    }
+
+
     @Override
     public Iterator<Symbol> iterator() {
         return symbols.iterator();
     }
 
     public String toString() {
-        StringBuilder result = new StringBuilder();
-        for (Symbol symbol : symbols) {
-            result.append(symbol.returnSymbols());
-        }
-        return getClass() + ": " + result.toString();
+        return getClass() + "[ symbols.size= " + symbols.size() + "]";
     }
 }

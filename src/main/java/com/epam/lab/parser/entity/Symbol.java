@@ -9,11 +9,10 @@ public class Symbol {
     private char letter;
 
     public Symbol(char c) {
-        super();
         letter = c;
     }
 
-    public char returnSymbols() {
+    public char getSymbol() {
         return letter;
     }
 }

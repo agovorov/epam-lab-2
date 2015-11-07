@@ -1,9 +1,8 @@
 package com.epam.lab.parser.entity;
 
-import com.epam.lab.parser.entity.token.OtherMark;
-import com.epam.lab.parser.entity.token.PunctuationMark;
-import com.epam.lab.parser.entity.token.Token;
-import com.epam.lab.parser.entity.token.Word;
+import com.epam.lab.parser.entity.token.Number;
+import com.epam.lab.parser.entity.token.*;
+import com.epam.lab.parser.exception.UndefinedTokenException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,7 +18,7 @@ public class Text implements Iterable<Paragraph> {
     private List<Paragraph> paragraphs;
 
     public Text() {
-        paragraphs = new ArrayList<Paragraph>();
+        paragraphs = new ArrayList<>();
     }
 
     /**
@@ -48,6 +47,9 @@ public class Text implements Iterable<Paragraph> {
         return paragraphs.iterator();
     }
 
+    /**
+     * @deprecated
+     */
     public void showStructure() {
         System.out.println("\t" + this.getClass() + ": ");
         for (Paragraph paragraph : paragraphs) {
@@ -74,28 +76,27 @@ public class Text implements Iterable<Paragraph> {
      *
      * @return simple text
      */
-    public String getText() {
+    public String getPlainText() {
         StringBuilder sb = new StringBuilder();
         if (!paragraphs.isEmpty()) {
             for (Paragraph paragraph : paragraphs) {
                 for (Sentence sentence : paragraph) {
                     for (Token token : sentence) {
-                        String tmpToken = "";
-                        if (token instanceof Word) {
-                            tmpToken = ((Word) token).getValue();
-                        } else if (token instanceof PunctuationMark) {
-                            tmpToken = ((PunctuationMark) token).getValue();
-                        } else if (token instanceof OtherMark) {
-                            tmpToken = ((OtherMark) token).getValue();
+                        String tokenValue;
+                        try {
+                            tokenValue = token.getTokenValue(token);
+                            sb.append(tokenValue);
+                        } catch (UndefinedTokenException e) {
+                            // Ignore wrong token
                         }
-                        sb.append(tmpToken);
                     }
                 }
-                sb.append('\n');
             }
         }
         return sb.toString();
     }
+
+
 
     @Override
     public String toString() {

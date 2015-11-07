@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * My task
+ * 3. Найти такое слово в первом предложении, которого нет ни в одном из
+ * остальных предложений.
  *
  * @author Govorov Andrey
  */
@@ -24,7 +25,7 @@ public class CustomTask implements Task {
 
     public CustomTask(Text text) {
         this.text = text;
-        listOfTask = new ArrayList<String>();
+        listOfTask = new ArrayList<>();
     }
 
     @Override

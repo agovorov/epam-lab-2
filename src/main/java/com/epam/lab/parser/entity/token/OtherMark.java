@@ -26,10 +26,10 @@ public class OtherMark extends Token {
     }
 
     public String getValue() {
-        return String.valueOf(symbol.returnSymbols());
+        return String.valueOf(symbol.getSymbol());
     }
 
     public String toString() {
-        return getClass() + ": `" + symbol.returnSymbols() + "`";
+        return getClass() + ": `" + symbol.getSymbol() + "`";
     }
 }
